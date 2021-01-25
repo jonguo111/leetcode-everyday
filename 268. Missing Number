@@ -1,0 +1,14 @@
+class Solution:
+    def missingNumber(self, nums: List[int]) -> int:
+        
+      
+        
+        num_set = set(nums)
+        
+        n = len(nums) 
+        print(n)
+        for number in range(n):
+            print(number)
+       
+            if number not in num_set:
+                return number
