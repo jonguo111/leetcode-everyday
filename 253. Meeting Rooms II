@@ -1,0 +1,29 @@
+class Solution:
+    def minMeetingRooms(self, intervals: List[List[int]]) -> int:
+        
+        #judge the initial status
+        if not intervals:
+            return 0
+
+        
+        #create a vacant list
+        _rooms = []
+
+        
+        #sort the intervals
+        intervals.sort(key=lambda x: x[0])
+ 
+        
+        #heapq
+        heapq.heappush(_rooms, intervals[0][1])
+      
+        
+        
+        #for loop to judge the end and the start
+        
+        for i in intervals[1:]:
+            if _rooms[0] < i[0]:
+                heapq.heappop(_rooms)
+            heapq.heappush(_rooms, i[1])
+            
+        return len(_rooms)
