@@ -1,0 +1,15 @@
+class Solution:
+    def twoSum(self, numbers: List[int], target: int) -> List[int]:
+        # 1. build a hash table;
+        # 2. target - numbers[i] = numbers[j]
+        # 3. return list where index of j should be j+1
+        hashtable = {}
+ 
+        
+        for i in range(len(numbers)):
+            
+            if target - numbers[i] in hashtable:
+
+                return hashtable[target-numbers[i]]+1, i+1
+            
+            hashtable[numbers[i]] = i
