@@ -1,0 +1,41 @@
+class Solution:
+    def dfs(self, grid, r, c):
+        
+        #set it to be zero to mean it has been iterated using depth first search
+        grid[r][c]=0
+        #get the number of the row of the grid and the number of the column of the grid
+        nr,nc=len(grid),len(grid[0])
+
+        
+        #iterate its surrounding
+        for (x,y) in [(r-1, c), (r+1, c), (r,c-1), (r,c+1)]:
+            if 0<=x<nr and 0<=y<nc and grid[x][y]=="1":
+                self.dfs(grid, x, y)
+
+
+
+    
+    
+    
+    def numIslands(self, grid: List[List[str]]) -> int:
+        
+        #define the length of row, column
+        nr = len(grid)
+        if nr == 0:
+            return 0
+        nc = len(grid[0])
+
+
+        
+        #initialize the number of island
+        num_islands = 0
+
+        
+        #iteration
+        for r in range(nr):
+            for c in range(nc):
+                if grid[r][c]=="1":
+                    num_islands+=1
+                    self.dfs(grid, r, c)
+                    
+        return num_islands
