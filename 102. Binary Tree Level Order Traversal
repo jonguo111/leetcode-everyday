@@ -1,0 +1,32 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def levelOrder(self, root: TreeNode) -> List[List[int]]:
+        if not root: 
+            return []  # 特殊情况，root为空直接返回
+        from collections import deque
+        
+        # 下面就是BFS模板内容，BFS关键在于队列的使用
+        layer = deque()
+        layer.append(root)  # 压入初始节点
+        res = []  # 结果集
+        
+        while layer:
+            cur_layer = []  # 临时变量，记录当前层的节点
+            
+            for _ in range(len(layer)):  # 遍历某一层的节点
+                node = layer.popleft()  # 将要处理的节点弹出
+                cur_layer.append(node.val)
+                
+                if node.left:  # 如果当前节点有左右节点，则压入队列，根据题意注意压入顺序，先左后右，
+                    layer.append(node.left)
+                if node.right:
+                    layer.append(node.right)
+            
+            res.append(cur_layer)  # 某一层的节点都处理完之后，将当前层的结果压入结果集
+        return res
+            
