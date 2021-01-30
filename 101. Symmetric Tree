@@ -1,0 +1,26 @@
+class Solution:       
+    def feng(self, left, right):
+        
+        
+        if left==None and right==None:
+            return True
+        
+        if left and right and left.val==right.val:
+            return self.feng(left.left, right.right) and self.feng(left.right, right.left)
+        
+        else:
+            return False
+    
+    
+    
+    
+    def isSymmetric(self, root):
+        """
+        :type root: TreeNode
+        :rtype: bool
+        """
+        #judge the root
+        if root == None:
+            return True
+        
+        return self.feng(root.left, root.right)
