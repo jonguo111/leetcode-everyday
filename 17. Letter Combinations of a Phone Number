@@ -1,0 +1,20 @@
+class Solution:
+    def letterCombinations(self, digits):
+        map_= {'2':'abc','3':'def',
+              '4':'ghi','5':'jkl',
+              '6':'mno', '7':'pqrs','8':'tuv',
+              '9':'wxyz'}
+        
+        if len(digits) == 0:
+            return []
+        
+        if len(digits) == 1:
+            return list(map_[digits[0]])
+        
+        
+        front = self.letterCombinations(digits[:-1])
+        
+        behind = map_[digits[-1]]
+        
+        
+        return[f+b for f in front for b in behind]
