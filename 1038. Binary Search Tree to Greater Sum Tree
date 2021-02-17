@@ -1,0 +1,20 @@
+class Solution:
+    def bstToGst(self, root: TreeNode) -> TreeNode:
+        
+        self.sum = 0
+        self.traverse(root)
+        
+        return root
+    
+    def traverse(self, root:TreeNode):
+        if not root:
+            return False
+        
+        
+        self.traverse(root.right)
+        
+        self.sum+=root.val
+        root.val = self.sum
+        
+        
+        self.traverse(root.left)
