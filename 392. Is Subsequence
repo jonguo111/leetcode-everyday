@@ -1,0 +1,22 @@
+class Solution:
+    def isSubsequence(self, s: str, t: str) -> bool:
+        idx = defaultdict(list)
+        
+        
+        #key is the characters in t and vlaue is the index 
+        for i, c in enumerate(t):
+            idx[c].append(i)
+        print (idx)
+        
+        lowBound= 0
+        
+        for i, c in enumerate(s):
+            j = bisect.bisect_left(idx[c], lowBound)
+            
+            if j == len(idx[c]):
+                return False
+            
+            lowBound = idx[c][j]+1
+            
+        return True
+        
