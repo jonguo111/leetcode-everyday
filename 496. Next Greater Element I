@@ -1,0 +1,23 @@
+class Solution:
+    def nextGreaterElement(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        
+        #build a dictionlary to record the next element position
+        #use stack to find the next right greater element
+        
+        stack = []
+        dict_stack = {}
+        #1 corresponde to 3
+        #3 corresponds to 4
+        #4 corresponds to null
+        
+        for i in range(len(nums2)):
+            while stack and nums2[i]>stack[-1]:
+                dict_stack[stack.pop()]=nums2[i]
+            stack.append(nums2[i])
+
+            
+        for j in range(len(nums1)):
+            
+            nums1[j]=dict_stack.get(nums1[j],-1)
+            
+        return nums1
