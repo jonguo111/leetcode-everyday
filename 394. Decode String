@@ -1,0 +1,33 @@
+class Solution:
+    def decodeString(self, s: str) -> str:
+        #when there is a '[', push the element into stack
+        #when there is a ']', pop the element stack 
+        
+        stack = []
+        res = ""
+        cur_num = 0
+        cur_string = ''
+        
+        for char in s:
+            
+            if char == '[':                
+                stack.append(cur_string)
+                stack.append(cur_num)
+                cur_num = 0
+                cur_string = ''
+                
+            elif char == ']':
+                pre_num=stack.pop()
+                pre_string=stack.pop()
+                cur_string = pre_string+pre_num*cur_string
+                
+            elif char.isdigit():                
+                cur_num = cur_num*10 + int(char)
+                
+                
+                
+                
+            else:
+                cur_string+=char
+                
+        return cur_string
