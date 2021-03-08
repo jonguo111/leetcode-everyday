@@ -21,3 +21,39 @@ class Solution:
             else:
                 res+=ch
         return res    
+
+
+
+
+=================================
+ #this ans can cover the mentioned four cases in 1249
+ #but it cannot be accepted for the coner case. 
+class Solution:
+    def minRemoveToMakeValid(self, s: str) -> str:
+        #build a stack but where pop the 
+        
+        left_number = 0
+        right_number = 0
+        
+        stack=[]
+        
+        res =''
+
+        for sub in s:
+            if stack and sub == '(':
+                left_number+=1
+                stack.append(sub)
+            elif stack and sub == ')':
+                right_number+=1
+                stack.append(sub)
+                if right_number>left_number:
+                    stack.pop()
+                    right_number-=1
+
+            elif sub!= '(' and sub!=')':
+                stack.append(sub)
+        
+        for char in stack:
+            res+=char
+
+        return res
