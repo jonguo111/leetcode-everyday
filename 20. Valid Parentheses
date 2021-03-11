@@ -18,3 +18,31 @@ class Solution:
 
                 
         return not stack
+        
+        
+  # update 03/11/2021
+  
+  #need to consider two conditions 
+  #the element is into the dictioniary or not
+  class Solution:
+    def isValid(self, s: str) -> bool:
+        
+        stack = []
+        dic = {")":"(","}":"{","]":"[" }
+        
+        for st in s:
+            if st in dic:
+                #in this line, it means the other elements have been 
+                #poped out
+                if stack == []:
+                    return False
+                else:
+                    top_element = stack.pop()
+                    if dic[st]!=top_element:
+                        return False
+               
+            else:
+                stack.append(st)
+                
+                
+        return stack == []
