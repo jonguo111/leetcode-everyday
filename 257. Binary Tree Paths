@@ -1,0 +1,38 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def binaryTreePaths(self, root: TreeNode) -> List[str]:
+        #for the dfs, the first thing is recursion 
+        #the second thing is backtracking
+        if not root:
+            return []
+        
+        res = []
+        
+        self.dfs(res,'' + str(root.val) ,root)
+        
+        return res
+    
+    def dfs(self, res, path, root):
+
+
+            
+        
+        #This case cannot be used with following 
+        #such like left = xxx and right = xxx
+        # left = TreeNode(root.left)
+        # right = TreeNode(root.right)
+        #return condition        
+        if root.left == None and root.right == None:
+            res.append(path)
+        #backtracking    
+        if root.left != None:
+            self.dfs(res, path+'->'+ str(root.left.val), root.left)
+            
+        if root.right != None:
+            self.dfs(res, path+'->'+str(root.right.val), root.right)
+        
