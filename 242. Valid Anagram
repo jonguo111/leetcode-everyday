@@ -1,0 +1,29 @@
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+        if len(s)!=len(t):
+            return False
+        
+        hs = {}
+        
+        #count the frequency of i in s and t
+        for i in s:
+            if i in hs:
+                hs[i]+=1
+            else:
+                hs[i]=1
+
+                
+        hs_ = {}       
+        for j in t:
+            if j in hs_:
+                hs_[j]+=1
+            else:
+                hs_[j]=1
+
+        
+        
+        if hs == hs_:
+            return True
+        
+        else:
+            return False
