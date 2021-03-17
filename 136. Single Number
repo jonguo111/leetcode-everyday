@@ -1,0 +1,26 @@
+class Solution:
+    def singleNumber(self, nums: List[int]) -> int:
+        count = Counter(nums)
+        
+        for i in nums:
+            if count[i]==1:
+                return i
+                
+                
+                
+  _______________________________________
+  class Solution:
+    def singleNumber(self, nums: List[int]) -> int:
+        hash_ = {}
+        
+        for i in nums:
+            if i not in hash_:
+                hash_[i]=1
+                
+                
+            elif i in hash_:
+                hash_[i]+=1
+
+        for i in nums:
+            if hash_[i]==1:
+                return i
