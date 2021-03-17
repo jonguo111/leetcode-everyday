@@ -24,3 +24,13 @@ class Solution:
         for i in nums:
             if hash_[i]==1:
                 return i
+        
+  _________________________________________
+  class Solution:
+    def singleNumber(self, nums: List[int]) -> int:
+        freq = Counter(nums)
+        count = list(set(nums))
+        
+        count.sort(key = lambda a:freq[a],reverse=True)
+        
+        return count[-1]
