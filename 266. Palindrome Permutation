@@ -1,0 +1,15 @@
+class Solution:
+    def canPermutePalindrome(self, s: str) -> bool:
+        count = Counter(s)
+        
+        l = []
+        s = set(s)
+        for sub in s:
+            
+            if len(s)>1 and (count[sub])%2!=0:
+                l.append(count[sub])
+                
+                if len(l)>1:
+                    return False
+        
+        return True     
