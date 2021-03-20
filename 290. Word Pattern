@@ -1,0 +1,47 @@
+#my solution---03/20/2021---tooooo longggggggggggggggggggg
+class Solution:
+    def wordPattern(self, pattern: str, s: str) -> bool:
+        #initial thought is to record the index 
+        #tranverse them to list
+        s = s.split()
+        
+        s = list(s)
+        p = list(pattern)
+        
+        d_p = defaultdict(int)
+        d_s = defaultdict(int)
+    
+        
+        for ind,val in enumerate(p):
+            d_p[val]=ind
+            print(d_p)
+
+
+        for index,value in enumerate(s):
+            d_s[value]=index
+            print(d_s)
+            
+        l = [] 
+        r = []
+ 
+        if len(d_s)!=len(d_p):
+            return False
+        if len(s)!=len(p):
+            return False
+        d_scp = d_s
+        d_pcp = d_p
+        
+        for i in d_scp.keys():
+            l.append(d_scp[i])
+            print(l)
+        for j in d_pcp.keys():
+            r.append(d_pcp[j])
+            print(r)
+            
+        for m in range(len(l)):
+            if l[m]!=r[m]:
+                return False
+        
+            
+            
+        return True
