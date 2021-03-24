@@ -1,0 +1,38 @@
+class Solution:
+    def solveSudoku(self, board: List[List[str]]) -> None:
+        """
+        Do not return anything, modify board in-place instead.
+        """
+        self.board=board
+        self.dfs(board)
+    
+    def isValid(self,x,y):
+        tmp = self.board[x][y]
+        #'p'can be changed to anything
+        self.board[x][y]='p'
+        for i in range(9):
+            if self.board[i][y]==tmp:
+                return False
+        for i in range(9):
+            if self.board[x][i]==tmp:
+                return False
+        for i in range(3):
+            for j in range(3):
+                if self.board[int(x/3)*3+i][int(y/3)*3+j]==tmp:
+                    return False
+        self.board[x][y]=tmp
+        
+        return True
+       
+    def dfs(self,board):
+        for i in range(9):
+            for j in range(9):
+                if board[i][j]=='.':
+                    for k in '123456789':
+                        board[i][j]=k
+                        if self.isValid(i,j) and self.dfs(board):
+                            return True
+
+                        self.board[i][j]='.'
+                    return False
+        return True
