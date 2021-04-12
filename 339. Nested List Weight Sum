@@ -1,0 +1,14 @@
+class Solution:
+    def depthSum(self, nestedList):
+        
+        def dfs(nestedList, depth):
+            temp_sum = 0
+            for member in nestedList:
+                if member.isInteger():
+                    temp_sum += member.getInteger()*depth
+                else:
+                    temp_sum+=dfs(member.getList(),depth+1)
+                    
+            return temp_sum
+        
+        return dfs(nestedList,1)
