@@ -1,0 +1,30 @@
+class Solution:
+    #dfs solution
+#     def findTargetSumWays(self, nums, target):
+#         self.count = 0
+        
+#         self.dfs(nums, target, 0, 0)
+        
+#         return self.count
+        
+        
+#     def dfs(self, nums, target, start, Sum):
+#         if start == len(nums):
+#             if Sum == target:
+#                 self.count+=1
+                
+#             return
+        
+#         self.dfs(nums, target, start+1, Sum+nums[start])
+#         self.dfs(nums, target, start+1, Sum-nums[start])
+
+    def findTargetSumWays(self, nums, target):
+        l = len(nums)
+        dp = [collections.defaultdict(int) for _ in range(l+1)]
+        dp[0][0]=1
+        
+        for i, num in enumerate(nums):
+            for sum, cnt in dp[i].items():
+                dp[i+1][sum+num]+=cnt
+                dp[i+1][sum-num]+=cnt
+        return dp[l][target]
