@@ -1,0 +1,9 @@
+class Solution:
+    def canConstruct(self, ransomNote, magazine):
+        
+        magdict = Counter(magazine)
+        randict = Counter(ransomNote)
+        for k in randict:
+            if randict[k] > magdict[k]:
+                return False
+        return True
