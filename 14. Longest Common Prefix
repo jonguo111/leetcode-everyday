@@ -1,0 +1,24 @@
+class Solution:
+    def longestCommonPrefix(self, strs):
+#         if not strs: return ""
+        
+#         pre = min(strs, key=len)
+        
+#         for i, c in enumerate(pre):
+            
+#             for word in strs:
+#                 if word[i]!=c:
+                    
+#                     return pre[:i]
+                
+#         return pre
+        
+        if not strs:
+            return ""
+        
+        shortest_strs = min(strs, key=len)
+        for i,c in enumerate(shortest_strs):
+            for word in strs:
+                if word[i]!=c:
+                    return shortest_strs[:i]
+        return shortest_strs
