@@ -1,0 +1,17 @@
+class Solution:
+    def reverse(self, x):
+        res = 0
+        x1 = abs(x)
+        
+        while(x1!=0):
+            temp = x1%10
+            if res > 214748364 or (res==214748364 and temp>7):
+                return 0
+            if res <-214748364 or (res==-214748364 and temp<-8):
+                return 0
+            
+            res = res*10+temp
+            x1//=10
+            
+        return res if x >0 else -res
+        
